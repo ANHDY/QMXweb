@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Entity.stuEntity;
+import qmx.DAOImpl.stuDaoImpl;
 import qmx.Dao.qmxDao;
 import qmx.User.Users;
 import qmx.Utils.UserDao;
@@ -45,13 +47,6 @@ public class stuUpdate extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		
-		Connection con = null;
-		try {
-			con = qmxDao.getConnection();
-		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		String name = request.getParameter("username");
 		String xuehao = request.getParameter("xuehao"); 
 		String xueyuan = request.getParameter("xueyuan");
@@ -61,35 +56,27 @@ public class stuUpdate extends HttpServlet {
 		String sex = request.getParameter("sex");
 		String hobby = request.getParameter("hobby");
 		
-		Users user = new Users();
-		user.setName(name);
-		user.setXuehao(xuehao);
-		user.setXueyuan(xueyuan);
-		user.setZhuanye(zhuanye);
-		user.setQq(qq);
-		user.setPhone(phone);
-		user.setSex(sex);
-		user.setHobby(hobby);
-		
-		UserDao dao = new UserDao();
+		stuEntity stu = new stuEntity();
+		stu.setName(name);
+		stu.setXuehao(xuehao);
+		stu.setXueyuan(xueyuan);
+		stu.setZhuanye(zhuanye);
+		stu.setQq(qq);
+		stu.setPhone(phone);
+		stu.setSex(sex);
+		stu.setHobby(hobby);
+		stuDaoImpl stuDao = new stuDaoImpl();
 		String forward = null;
-		boolean flag;
 		try {
-			flag = dao.stuUpdates(con,user);
-			if(flag){
-				forward = "/D_qmx/hd.jsp";
-				RequestDispatcher rd = request.getRequestDispatcher(forward);
-				rd.forward(request, response);
-			}
-			else{
-				forward = "/D_qmx/error.jsp";
-				RequestDispatcher rd = request.getRequestDispatcher(forward);
-				rd.forward(request, response);
-			}
-		} catch (SQLException e) {
+			stuDao.stuUpdate(stu);
+			forward = "/D_qmx/hd.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(forward);
+			rd.forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 	}
 
