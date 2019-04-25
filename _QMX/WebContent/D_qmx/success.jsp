@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="D_qmx/jses/qmx1.js"></script>
 </head>
 <body>
-	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	<sql:setDataSource var="snapshot" driver="com.mysql.cj.jdbc.Driver"
     	url="jdbc:mysql://localhost:3306/qmx?serverTimezone=GMT&&useSSL=false&useUnicode=true"
     	user="root"  password="root"/>
 	<sql:query dataSource="${snapshot}" var="result">
@@ -40,8 +40,70 @@
 			<input type="text" placeholder="按学号查询" id="a1">
 			<input type="button" id="a2" onclick="myFunction()" value="查找">
 			<input type="button" id="a4" onclick="cancel()" value="取消查找">
-			<input type="button" value="新增/隐藏"  id="a3" onclick="dis()">
 		</form>
+		<button class="btn" data-toggle="modal" id="a3" data-target="#myModal">添加学生</button>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" 
+		                	data-dismiss="modal" aria-hidden="true">&times;
+		                </button>
+		                <h4 class="modal-title" id="myModalLabel">学生信息</h4>
+		            </div>
+		            <form role="form" action="<%= request.getContextPath() %>/add" method="post" id="form1">
+		            	<div class="modal-body">
+							<div class="form-group">
+								<label>姓名：</label>
+								<input type="text" class="form-control" name="username" id="names" placeholder=" 姓名">
+								<div id="namesId"></div>
+							</div>
+							<div class="form-group">
+								<label>学号：</label>
+								<input type="text" class="form-control " name="xuehao" placeholder=" 学号" id="xuehao">
+								<div id="xuehaoId"></div>
+							</div>
+							<div class="form-group">
+								<label>学院：</label>
+								<input type="text" class="form-control " name="xueyuan" placeholder=" 学院" id="xueyuan">
+								<div id="xueyuanId"></div>
+							</div>
+							<div class="form-group">
+								<label>专业：</label>
+								<input type="text" class="form-control " name="zhuanye" placeholder=" 专业" id="zhuanye">
+								<div id="zhuanyeId"></div>
+							</div>
+							<div class="form-group">
+								<label>QQ：</label>
+								<input type="text" class="form-control " name="qq" placeholder=" QQ号" id="qq">
+								<div id="qqId"></div>
+							</div>
+							<div class="form-group">
+								<label>联系电话：</label>
+								<input type="text" class="form-control " name="phone" placeholder=" 联系电话" id="dianhua">
+								<div id="dianhuaId"></div>
+							</div><br>
+							<div class="men man">
+								<span>性别：</span>
+								<input class="input-b" type="radio" name="sex" value="男生" checked> 男生
+								<input class="input-b" type="radio" value="女生" name="sex"> 女生
+							</div></br>
+							<div class="men"> 
+								<span>组别：</span>
+								<input class="input-b" type="radio" name="hobby" value="开发组" checked> 开发组
+								<input class="input-b" type="radio" value="硬件组" name="hobby"> 硬件组
+							</div></br>
+							<input type="text" class="change " name="change" id="change" value="test">
+		            	</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                <button type="submit" class="btn btn-primary">确定</button>
+		            </div>
+		            </form>
+		        </div>
+		    </div>
+		</div>
+		
 		<table id="b1">
 			<tr>
 				<th class="col-sm-1">姓名</th>
@@ -75,56 +137,7 @@
 		</table>
 		<!-- 增加 -->
 		
-		<form action="add" method="post">
-		<table id="add" style="display:none">
-	        <caption style="font-size:26px;text-align: center;">添加信息</caption>
-	        <tr>
-	        	<td>姓名:
-	        		<input type="text" id="name" name="username"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>学号:
-	        		<input type="text" id="iname" name="xuehao"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>学院:
-	        		<input type="text" id="name1" name="xueyuan"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>专业:
-	        		<input type="text" id="name2" name="zhuanye"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>qq号:
-	        		<input type="text" id="name3" name="qq"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>手机:
-	        		<input type="text" id="name4" name="phone"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>性别:
-	        		<input type="text" id="name5" name="sex"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>组别:
-	        		<input type="text" id="name6" name="hobby"/>
-	        	</td>
-	        </tr>
-	        <tr>
-	        	<td>
-	        		<input type="submit" value="添加此信息" onclick="add()" class="abc" />
-	        	</td>
-	        </tr>
-    	</table>
-		</form>
+		
 		
 		<table>
 			

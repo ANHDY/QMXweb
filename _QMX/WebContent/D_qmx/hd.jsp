@@ -84,7 +84,7 @@
 			<form role="form" action="<%= request.getContextPath() %>/stuUpdate" method="post" id="form1">
 				<h2>确定信息✧٩(ˊωˋ*)و✧</h2>
 				<div class="form-group">
-					<input type="hidden" class="form-control" id="id"  name="id" value="${user.id}">
+					<input type="hidden" class="form-control" id="id"  name="id" value="${stu.id}">
 					<label>姓名：</label>
 					<input type="text" class="form-control" name="username" id="names" value="<%= request.getParameter("username") %>">
 					<div id="namesId"></div>

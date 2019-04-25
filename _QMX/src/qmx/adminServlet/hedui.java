@@ -1,4 +1,4 @@
-package qmx.Servlet;
+package qmx.adminServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

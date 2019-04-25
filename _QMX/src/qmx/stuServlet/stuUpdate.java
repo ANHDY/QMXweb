@@ -1,6 +1,7 @@
-package qmx.Servlet;
+package qmx.stuServlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,21 +13,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import Entity.stuEntity;
 import qmx.DAOImpl.stuDaoImpl;
+import qmx.Dao.qmxDao;
 import qmx.User.Users;
 import qmx.Utils.UserDao;
 
 /**
- * Servlet implementation class baoming
+ * Servlet implementation class updates
  */
-@WebServlet("/baoming")
-public class baoming extends HttpServlet {
+@WebServlet("/stuUpdate")
+public class stuUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public stuUpdate() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		
-		stuEntity stu = new stuEntity();
 		String name = request.getParameter("username");
 		String xuehao = request.getParameter("xuehao"); 
 		String xueyuan = request.getParameter("xueyuan");
@@ -35,7 +55,8 @@ public class baoming extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String sex = request.getParameter("sex");
 		String hobby = request.getParameter("hobby");
-
+		
+		stuEntity stu = new stuEntity();
 		stu.setName(name);
 		stu.setXuehao(xuehao);
 		stu.setXueyuan(xueyuan);
@@ -44,22 +65,17 @@ public class baoming extends HttpServlet {
 		stu.setPhone(phone);
 		stu.setSex(sex);
 		stu.setHobby(hobby);
-		
 		stuDaoImpl stuDao = new stuDaoImpl();
 		String forward = null;
 		try {
-			stuDao.addStu(stu);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
+			stuDao.stuUpdate(stu);
+			forward = "/D_qmx/hd.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(forward);
+			rd.forward(request, response);
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		forward = "/D_qmx/hd.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(forward);
-		rd.forward(request, response);
 		
 		
 	}

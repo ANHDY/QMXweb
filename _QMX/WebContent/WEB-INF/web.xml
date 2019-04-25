@@ -3,7 +3,7 @@
   <display-name>_QMX</display-name>
   <servlet>
     <servlet-name>baoming</servlet-name>
-    <servlet-class>qmx.Servlet.baoming</servlet-class>
+    <servlet-class>qmx.stuServlet.baoming</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>baoming</servlet-name>
@@ -11,7 +11,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>delete</servlet-name>
-    <servlet-class>qmx.Servlet.delete</servlet-class>
+    <servlet-class>qmx.adminServlet.delete</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>delete</servlet-name>
@@ -19,7 +19,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>update</servlet-name>
-    <servlet-class>qmx.Servlet.update</servlet-class>
+    <servlet-class>qmx.adminServlet.update</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>update</servlet-name>
