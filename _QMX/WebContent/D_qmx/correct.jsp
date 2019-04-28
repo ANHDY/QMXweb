@@ -26,43 +26,43 @@
 			<form role="form" action="<%= request.getContextPath() %>/Update" method="post" id="form1">
 				<h2>修改信息</h2>
 				<div class="form-group">
-					<input type="hidden" class="form-control" id="id"  name="id" value="${user.id}">
+					<input type="hidden" class="form-control" id="id"  name="id" value="${stu.id}">
 					<label>姓名：</label>
-					<input type="text" class="form-control" name="username" id="names" value="${user.name }">
+					<input type="text" class="form-control" name="username" id="names" value="${stu.name }">
 					<div id="namesId"></div>
 				</div>
 				<div class="form-group">
 					<label>学号：</label>
-					<input type="text" class="form-control " name="xuehao" id="xuehao" value="${user.xuehao }">
+					<input type="text" class="form-control " name="xuehao" id="xuehao" value="${stu.xuehao }">
 					<div id="xuehaoId"></div>
 				</div>
 				<div class="form-group">
 					<label>学院：</label>
-					<input type="text" class="form-control " name="xueyuan" id="xueyuan" value="${user.xueyuan }">
+					<input type="text" class="form-control " name="xueyuan" id="xueyuan" value="${stu.xueyuan }">
 					<div id="xueyuanId"></div>
 				</div>
 				<div class="form-group">
 					<label>专业：</label>
-					<input type="text" class="form-control " name="zhuanye" id="zhuanye" value="${user.zhuanye }">
+					<input type="text" class="form-control " name="zhuanye" id="zhuanye" value="${stu.zhuanye }">
 					<div id="zhuanyeId"></div>
 				</div>
 				<div class="form-group">
 					<label>QQ：</label>
-					<input type="text" class="form-control " name="qq" id="qq" value="${user.qq }">
+					<input type="text" class="form-control " name="qq" id="qq" value="${stu.qq }">
 					<div id="qqId"></div>
 				</div>
 				<div class="form-group">
 					<label>联系电话：</label>
-					<input type="text" class="form-control " name="phone" id="dianhua" value="${user.phone }">
+					<input type="text" class="form-control " name="phone" id="dianhua" value="${stu.phone }">
 					<div id="dianhuaId"></div>
 				</div>
 				<div class="form-group">
 					<label>性别：</label>
-					<input type="text" class="form-control radio-inline" name="sex"  value="${user.sex }">
+					<input type="text" class="form-control radio-inline" name="sex"  value="${stu.sex }">
 				</div>
 				<div class="form-group">
 					<label>选择组别：</label>
-					<input type="text" class="form-control radio-inline" name="hobby" value="${user.hobby }">
+					<input type="text" class="form-control radio-inline" name="hobby" value="${stu.hobby }">
 				</div>
 				<input class="btn1 btn-primary" type="submit" value="确定修改"/>
 			</form>

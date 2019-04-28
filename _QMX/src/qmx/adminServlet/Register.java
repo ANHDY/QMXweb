@@ -1,6 +1,7 @@
 package qmx.adminServlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import qmx.User.messages;
-import qmx.Utils.UserDao;
+import Entity.adminEntity;
+import qmx.DAOImpl.adminDaoImpl;
 
 /**
  * Servlet implementation class Register
@@ -23,26 +24,29 @@ public class Register extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
 		
-		messages user = new messages();
+		adminEntity admin = new adminEntity();
 		//获取register.jsp页面提交的账号和密码
 		String name = request.getParameter("zhanghao");
 		String password = request.getParameter("password");
 		
 		//获取register.jsp页面提交的账号和密码设置到实体类中
-		user.setName(name);
-		user.setPassword(password);
+		admin.setUsername(name);
+		admin.setPassword(password);
 		
 		//引入数据交互层
-		UserDao dao = new UserDao();
+		adminDaoImpl adminRegister = new adminDaoImpl();
 		
 		String forward = null;
-		boolean flag = dao.register(user);
-		if(flag){
-			forward = "/D_qmx/login.jsp";
-			RequestDispatcher rd = request.getRequestDispatcher(forward);
-			rd.forward(request, response);
-			
+		try {
+			adminRegister.adminRegister(admin);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		forward = "/D_qmx/login.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(forward);
+		rd.forward(request, response);
+			
 		
 	}
 

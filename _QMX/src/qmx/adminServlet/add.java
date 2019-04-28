@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Entity.stuEntity;
 import qmx.DAOImpl.stuDaoImpl;
-import qmx.User.Users;
-import qmx.Utils.UserDao;
 
 /**
  * Servlet implementation class add

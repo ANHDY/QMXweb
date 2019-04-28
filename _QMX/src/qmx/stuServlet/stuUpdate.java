@@ -1,7 +1,6 @@
 package qmx.stuServlet;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -13,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Entity.stuEntity;
 import qmx.DAOImpl.stuDaoImpl;
-import qmx.Dao.qmxDao;
-import qmx.User.Users;
-import qmx.Utils.UserDao;
 
 /**
  * Servlet implementation class updates

@@ -2,6 +2,7 @@ package qmx.DAOImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Entity.stuEntity;
@@ -46,6 +47,20 @@ public class stuDaoImpl implements stuDao {
 		ps.setString(8, stu.getXuehao());
 		ps.executeUpdate();
 		con.close();
-//		ps.close();
+		ps.close();
+	}
+	
+	public boolean xuehaoSearch(String xuehao) throws ClassNotFoundException, SQLException{
+		boolean check_msg;
+		MysqlConnection MyConn = new MysqlConnection();
+		Connection conn = MyConn.getConnection();
+		String sql = "select * from qmx where 学号=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, xuehao);
+		ResultSet rs = ps.executeQuery();
+		check_msg = rs.next();
+		conn.close();
+		return check_msg;
+		
 	}
 }

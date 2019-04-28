@@ -1,22 +1,15 @@
 package qmx.adminServlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import qmx.Dao.qmxDao;
-import qmx.User.Users;
-import qmx.Utils.UserDao;
+import qmx.DAOImpl.adminDaoImpl;
 
 /**
  * Servlet implementation class delete
@@ -29,16 +22,11 @@ public class delete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
 		request.setCharacterEncoding("utf-8");
-		PrintWriter pw = response.getWriter();
-		Connection con = null;
 		int id = Integer.valueOf(request.getParameter("序号"));
-		UserDao user = new UserDao();
+		adminDaoImpl adminDel = new adminDaoImpl();
 		try {
-			con = qmxDao.getConnection();
-			if(user.deletes(con, id))
-				request.getRequestDispatcher("/D_qmx/success.jsp").forward(request, response);
-			else
-				pw.print(id);
+			adminDel.deletesStu(id);
+			request.getRequestDispatcher("/D_qmx/success.jsp").forward(request, response);
 			
 		}  catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
