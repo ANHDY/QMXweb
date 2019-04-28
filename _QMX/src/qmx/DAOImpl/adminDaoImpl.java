@@ -25,7 +25,21 @@ public class adminDaoImpl implements adminDao {
 			admins.setPassword(rs.getString("密码"));
 			return admin;
 		}
-		
 		return null;
+	}
+	
+	public void deletesStu(int id) throws ClassNotFoundException, SQLException{
+		MysqlConnection MyConn = new MysqlConnection();
+		Connection conn = MyConn.getConnection();
+		String sql = "delete from qmx where id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setLong(1, id);
+		ps.executeUpdate();
+		conn.close();
+		
+		
+		
+		
+		
 	}
 }

@@ -31,14 +31,14 @@ public class delete extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		PrintWriter pw = response.getWriter();
 		Connection con = null;
-		String xuehao = request.getParameter("学号");
+		int id = Integer.valueOf(request.getParameter("序号"));
 		UserDao user = new UserDao();
 		try {
 			con = qmxDao.getConnection();
-			if(user.deletes(con, xuehao))
+			if(user.deletes(con, id))
 				request.getRequestDispatcher("/D_qmx/success.jsp").forward(request, response);
 			else
-				pw.print(xuehao);
+				pw.print(id);
 			
 		}  catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

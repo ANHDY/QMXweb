@@ -36,10 +36,10 @@ public class UserDao {
 		}
 	}
 	
-	public boolean deletes(Connection con,String xuehao) throws SQLException{
-		String sql = "delete from qmx where 学号 = ?";
+	public boolean deletes(Connection con,int id) throws SQLException{
+		String sql = "delete from qmx where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-	    ps.setString(1, xuehao);
+	    ps.setLong(1, id);
 	    if(ps.executeUpdate()>0)
 	    	return true;
 	    return false;
