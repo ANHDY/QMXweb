@@ -1,5 +1,7 @@
 package qmx.Dao;
 
+import java.sql.ResultSet;
+
 import Entity.stuEntity;
 
 public interface stuDao {
@@ -13,5 +15,10 @@ public interface stuDao {
 		return false;
 		
 	}
+	
+	public static ResultSet stuList(){
+		return null;
+		
+	};
 	
 }

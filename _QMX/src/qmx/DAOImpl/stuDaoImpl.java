@@ -33,7 +33,7 @@ public class stuDaoImpl implements stuDao {
 	
 	public void stuUpdate(stuEntity stu) throws ClassNotFoundException, SQLException{
 		String sql = "update qmx set 姓名=?,学院=?,专业=?,qq号=?,电话号码=?,性别=?,选择组别=? "
-				+ "where 学号 = ?";
+				+ "where 学号= ?";
 		MysqlConnection Mycon = new MysqlConnection();
 		Connection con = Mycon.getConnection();
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -61,6 +61,15 @@ public class stuDaoImpl implements stuDao {
 		check_msg = rs.next();
 		conn.close();
 		return check_msg;
+	}
+	
+	public ResultSet stuList() throws ClassNotFoundException, SQLException{
+		MysqlConnection MyConn = new MysqlConnection();
+		Connection conn = MyConn.getConnection();
+		StringBuffer sb = new StringBuffer("select 姓名,学号,学院,专业,qq号,电话号码,性别,选择组别 from qmx");
+		PreparedStatement ps = conn.prepareStatement(sb.toString());
+		return ps.executeQuery();
 		
 	}
+	
 }

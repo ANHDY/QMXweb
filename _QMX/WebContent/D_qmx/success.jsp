@@ -41,6 +41,9 @@
 			<input type="button" id="a2" onclick="myFunction()" value="查找">
 			<input type="button" id="a4" onclick="cancel()" value="取消查找">
 		</form>
+		<div class="bottom-right">
+			<a href="download" id="excel" class="excel"> 下载Excel表</a>
+		</div>
 		<button class="btn" data-toggle="modal" id="a3" data-target="#myModal">添加学生</button>
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		    <div class="modal-dialog">
